@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+
 const About = () => {
+
+  const callAboutPage = async() =>{
+    try {
+        const res = await fetch('/about',{
+          method:"GET",
+          headers:{
+            Accept:"application/json",
+            "Content-Type":"application/json"
+          },
+          credentials:"include"
+        })
+        const data = await res.json();
+        
+    } catch (error) {
+      
+    }
+  }
+
+  useEffect(()=>{
+    callAboutPage()
+  },[])
+
   return (
     <>
       <div className="container">
-        <form method="">
+        <form method="GET">
           <div className="row">
             <div className="col-md-4">
               <img src="" alt="" />
